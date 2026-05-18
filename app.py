@@ -152,7 +152,136 @@ def initialize_state() -> None:
         st.session_state.setdefault(key, value)
 
 
-initialize_state()
+st.markdown(
+    """
+    <style>
+        :root {
+            --bg: #fbfaf7;
+            --panel: #ffffff;
+            --ink: #2f3437;
+            --muted: #6d7378;
+            --line: #ece7df;
+            --accent: #6f8f72;
+            --accent-soft: #edf4ec;
+            --rose-soft: #fff1ee;
+        }
+
+        .stApp {
+            background:
+                radial-gradient(circle at top left, rgba(255, 241, 238, 0.85), transparent 32rem),
+                linear-gradient(180deg, var(--bg), #f7f4ef);
+            color: var(--ink);
+        }
+
+        .block-container {
+            max-width: 980px;
+            padding-top: 2.25rem;
+            padding-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.35rem !important;
+            font-weight: 760 !important;
+            letter-spacing: 0 !important;
+            color: var(--ink);
+            margin-bottom: 0.25rem !important;
+        }
+
+        [data-testid="stCaptionContainer"] {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        [data-testid="stSidebar"] {
+            background: rgba(255, 255, 255, 0.78);
+            border-right: 1px solid var(--line);
+        }
+
+        [data-testid="stSidebar"] h2,
+        [data-testid="stSidebar"] h3 {
+            color: var(--ink);
+            letter-spacing: 0 !important;
+        }
+
+        [data-testid="stTextInput"] input {
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            background: #fffdfb;
+        }
+
+        .stButton > button {
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            box-shadow: none;
+            font-weight: 650;
+            transition: all 140ms ease;
+        }
+
+        .stButton > button:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .stButton > button[kind="primary"] {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .stButton > button[kind="primary"]:hover {
+            background: #5f7d62;
+            border-color: #5f7d62;
+            color: white;
+        }
+
+        [data-testid="stAlert"] {
+            border-radius: 8px;
+            border: 1px solid var(--line);
+        }
+
+        [data-testid="stChatMessage"] {
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
+            background: var(--accent-soft);
+        }
+
+        [data-testid="stChatInput"] {
+            background: rgba(251, 250, 247, 0.85);
+        }
+
+        [data-testid="stChatInput"] textarea {
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            background: #fffdfb;
+        }
+
+        code {
+            border-radius: 6px;
+        }
+
+        .cute-meta {
+            display: inline-flex;
+            gap: 0.45rem;
+            align-items: center;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.74);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 0.3rem 0.7rem;
+            font-size: 0.88rem;
+            margin: 0.6rem 0 1rem;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 st.title("URL RAG Chatbot")
 st.caption("Ask questions about one live web page using Streamlit, ChromaDB, MiniLM, and Ollama Gemma 2B.")

@@ -220,7 +220,15 @@ def retrieve_context(
         n_results=TOP_K,
     )
 
-    return result.get("documents", [[]])[0]
+    documents = result.get("documents")
+
+    if not documents:
+        return []
+
+    if not documents[0]:
+        return []
+
+    return documents[0]
 
 
 # =========================
@@ -540,6 +548,9 @@ if question:
                     st.session_state.collection,
                     question,
                 )
+                if not context_chunks:
+                    st.warning("No relevant context found from the webpage.")
+                    st.stop()
 
                 prompt = build_prompt(
                     question=question,
